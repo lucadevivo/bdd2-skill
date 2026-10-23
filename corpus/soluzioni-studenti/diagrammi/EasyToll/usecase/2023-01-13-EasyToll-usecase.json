@@ -1,0 +1,54 @@
+{
+  "nome": "EasyToll 2023-01-13 — use-case",
+  "attori": [
+    "SistemaFatturazione",
+    "Casello",
+    "CaselloTelepass",
+    "Tutor"
+  ],
+  "usecase": [
+    "CalcoloConto",
+    "RegistraTagliando",
+    "RegTagliandoVirtuale",
+    "Rilevazione"
+  ],
+  "associazioni": [
+    {
+      "nome": "",
+      "da": "SistemaFatturazione",
+      "molt_da": "",
+      "a": "CalcoloConto",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Casello",
+      "molt_da": "",
+      "a": "RegistraTagliando",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "CaselloTelepass",
+      "molt_da": "",
+      "a": "RegTagliandoVirtuale",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Tutor",
+      "molt_da": "",
+      "a": "Rilevazione",
+      "molt_a": ""
+    }
+  ],
+  "generalizzazioni": [
+    {
+      "padre": "Casello",
+      "figlie": [
+        "CaselloTelepass"
+      ],
+      "vincolo": ""
+    }
+  ]
+}

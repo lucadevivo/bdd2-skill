@@ -1,0 +1,351 @@
+{
+  "nome": "Citta Verde — ristrutturato",
+  "classi": {
+    "Specie": [
+      [
+        "nomeCom",
+        "Stringa {id1}"
+      ],
+      [
+        "nomeSc",
+        "Stringa {id2}"
+      ]
+    ],
+    "Malattia": [
+      [
+        "nomeCom",
+        "Stringa {id1}"
+      ],
+      [
+        "nomeSc",
+        "Stringa {id2}"
+      ],
+      [
+        "grav",
+        "Grav"
+      ]
+    ],
+    "SoggVerde": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "dataPia",
+        "Date"
+      ],
+      [
+        "dataRim",
+        "Date [0..1]"
+      ],
+      [
+        "lat",
+        "Real"
+      ],
+      [
+        "long",
+        "Real"
+      ],
+      [
+        "rischio",
+        "Rischio"
+      ]
+    ],
+    "CausaRim": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "TipoMisura": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "unita",
+        "Stringa"
+      ]
+    ],
+    "PeriodoMal": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "inMal",
+        "Date"
+      ],
+      [
+        "fineMal",
+        "Date [0..1]"
+      ]
+    ],
+    "AreaVerde": [
+      [
+        "nome",
+        "Stringa {id}"
+      ],
+      [
+        "fruibile",
+        "Bool"
+      ],
+      [
+        "sensibile",
+        "Bool"
+      ]
+    ],
+    "TipoArea": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Intervento": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "inInt",
+        "Date"
+      ],
+      [
+        "durataGg",
+        "IntGZ"
+      ],
+      [
+        "fineInt",
+        "Date [0..1]"
+      ],
+      [
+        "nPers",
+        "IntGZ"
+      ],
+      [
+        "prio",
+        "Prio"
+      ]
+    ],
+    "TipoInt": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Attrezzo": [
+      [
+        "nome",
+        "Stringa {id}"
+      ],
+      [
+        "tipoAtt",
+        "TipoAtt"
+      ]
+    ],
+    "Squadra": [
+      [
+        "cod",
+        "CodSqua {id}"
+      ],
+      [
+        "dataFor",
+        "Data"
+      ],
+      [
+        "dataSc",
+        "Data [0..1]"
+      ]
+    ],
+    "Operatore": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "cognome",
+        "Stringa"
+      ],
+      [
+        "dataIn",
+        "Data"
+      ],
+      [
+        "dataFine",
+        "Data [0..1]"
+      ],
+      [
+        "CF",
+        "CodiceFiscale {id}"
+      ]
+    ],
+    "Partecipa": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "inPar",
+        "Date"
+      ],
+      [
+        "finePar",
+        "Date"
+      ]
+    ],
+    "Capo": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "inizio",
+        "Date"
+      ],
+      [
+        "fine",
+        "Date"
+      ]
+    ],
+    "misSog": [
+      [
+        "valore",
+        "RealGZ"
+      ]
+    ],
+    "intSqu": [
+      [
+        "istAcq",
+        "Timestamp"
+      ]
+    ]
+  },
+  "associazioni": [
+    {
+      "nome": "sogSpe",
+      "da": "Specie",
+      "molt_da": "1..1",
+      "a": "SoggVerde",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "misSog",
+      "da": "TipoMisura",
+      "molt_da": "0..*",
+      "a": "SoggVerde",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "cauRim",
+      "da": "CausaRim",
+      "molt_da": "1..1",
+      "a": "SoggVerde",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "malPer",
+      "da": "Malattia",
+      "molt_da": "1..1",
+      "a": "PeriodoMal",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "malSog",
+      "da": "SoggVerde",
+      "molt_da": "1..1",
+      "a": "PeriodoMal",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "areaSog",
+      "da": "AreaVerde",
+      "molt_da": "1..1",
+      "a": "SoggVerde",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "areaTipo",
+      "da": "AreaVerde",
+      "molt_da": "0..*",
+      "a": "TipoArea",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "areaInt",
+      "da": "AreaVerde",
+      "molt_da": "1..1",
+      "a": "Intervento",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "intSog",
+      "da": "SoggVerde",
+      "molt_da": "0..*",
+      "a": "Intervento",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "intTipo",
+      "da": "Intervento",
+      "molt_da": "0..*",
+      "a": "TipoInt",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "attInt",
+      "da": "Intervento",
+      "molt_da": "0..*",
+      "a": "Attrezzo",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "attOpe",
+      "da": "Attrezzo",
+      "molt_da": "0..*",
+      "a": "Operatore",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "intSqu",
+      "da": "Intervento",
+      "molt_da": "0..*",
+      "a": "Squadra",
+      "molt_a": "0..1"
+    },
+    {
+      "nome": "parSqu",
+      "da": "Squadra",
+      "molt_da": "1..1",
+      "a": "Partecipa",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "opePar",
+      "da": "Partecipa",
+      "molt_da": "0..*",
+      "a": "Operatore",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "capSqu",
+      "da": "Squadra",
+      "molt_da": "1..1",
+      "a": "Capo",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "capOpe",
+      "da": "Capo",
+      "molt_da": "0..*",
+      "a": "Operatore",
+      "molt_a": "1..1"
+    }
+  ],
+  "generalizzazioni": []
+}

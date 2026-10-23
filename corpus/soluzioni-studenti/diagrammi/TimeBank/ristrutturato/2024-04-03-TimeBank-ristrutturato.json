@@ -1,0 +1,122 @@
+{
+  "nome": "TimeBank 2024-04-03 — ristrutturato",
+  "classi": {
+    "Abilita": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Utente": {
+      "attributi": [
+        [
+          "id",
+          "serial {id}"
+        ],
+        [
+          "nome",
+          "Stringa"
+        ],
+        [
+          "cognome",
+          "Stringa"
+        ],
+        [
+          "mail",
+          "Email"
+        ],
+        [
+          "tel",
+          "Tel"
+        ],
+        [
+          "istIsc",
+          "Timestamp"
+        ]
+      ],
+      "operazioni": [
+        [
+          "saldo",
+          "RealGEZ"
+        ]
+      ]
+    },
+    "Scambio": {
+      "attributi": [
+        [
+          "id",
+          "serial {id}"
+        ],
+        [
+          "inizioSca",
+          "Timestamp"
+        ],
+        [
+          "durataOre",
+          "RealGZ"
+        ]
+      ],
+      "operazioni": [
+        [
+          "valore",
+          "RealGZ"
+        ]
+      ]
+    },
+    "AbiUte": {
+      "attributi": [],
+      "operazioni": [
+        [
+          "media",
+          "RealGEZ"
+        ]
+      ]
+    },
+    "Feedback": [
+      [
+        "voto",
+        "Voto"
+      ]
+    ]
+  },
+  "associazioni": [
+    {
+      "nome": "abisca",
+      "da": "Abilita",
+      "molt_da": "1..1",
+      "a": "Scambio",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "AbiUte",
+      "da": "Abilita",
+      "molt_da": "0..*",
+      "a": "Utente",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "dasca",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Scambio",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "chiedesca",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Scambio",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "Feedback",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Scambio",
+      "molt_a": "0..*"
+    }
+  ],
+  "generalizzazioni": []
+}

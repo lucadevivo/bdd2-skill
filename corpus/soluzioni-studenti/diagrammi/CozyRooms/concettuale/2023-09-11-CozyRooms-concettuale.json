@@ -1,0 +1,238 @@
+{
+  "nome": "CozyRooms 2023-09-11 — concettuale",
+  "classi": {
+    "Utente": {
+      "attributi": [
+        [
+          "nome",
+          "Stringa"
+        ],
+        [
+          "cognome",
+          "Stringa"
+        ],
+        [
+          "email",
+          "Mail"
+        ],
+        [
+          "num",
+          "Cell"
+        ]
+      ],
+      "operazioni": [
+        [
+          "Fedelta",
+          "Intero >= 0"
+        ]
+      ]
+    },
+    "Gestore": [
+      [
+        "cod",
+        "CF {id}"
+      ]
+    ],
+    "Struttura": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "stelle",
+        "1..7"
+      ],
+      [
+        "via",
+        "Indirizzo"
+      ]
+    ],
+    "Citta": [
+      [
+        "nome",
+        "Stringa"
+      ]
+    ],
+    "Tipologia": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Sistemazione": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "posti",
+        "Intero > 0"
+      ]
+    ],
+    "Tariffa": [
+      [
+        "posti",
+        "Intero > 0 {id}"
+      ],
+      [
+        "giorno",
+        "Data {id}"
+      ],
+      [
+        "prezzo",
+        "Reale >= 0"
+      ]
+    ],
+    "Livello": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "pren",
+        "Intero >= 0 {id}"
+      ]
+    ],
+    "MetodoPay": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Prenotazione": [
+      [
+        "istPren",
+        "DataOra"
+      ],
+      [
+        "inizio",
+        "Data"
+      ],
+      [
+        "fine",
+        "Data"
+      ]
+    ],
+    "Accettata": [
+      [
+        "istAcc",
+        "DataOra"
+      ]
+    ],
+    "Rifiutata": [
+      [
+        "istRif",
+        "DataOra"
+      ]
+    ],
+    "Annullata": [
+      [
+        "istAnn",
+        "DataOra"
+      ]
+    ],
+    "Sconto": [
+      [
+        "val",
+        "int_unit"
+      ]
+    ],
+    "occupanti": [
+      [
+        "occupanti",
+        "Intero > 0"
+      ]
+    ]
+  },
+  "associazioni": [
+    {
+      "nome": "ges_str",
+      "da": "Gestore",
+      "molt_da": "1..*",
+      "a": "Struttura",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "cit_str",
+      "da": "Citta",
+      "molt_da": "1..1",
+      "a": "Struttura",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "str_tip",
+      "da": "Tipologia",
+      "molt_da": "1..1",
+      "a": "Struttura",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "sis_str",
+      "da": "Struttura",
+      "molt_da": "1..1",
+      "a": "Sistemazione",
+      "molt_a": "1..*"
+    },
+    {
+      "nome": "sis_tar",
+      "da": "Sistemazione",
+      "molt_da": "1..1 {id}",
+      "a": "Tariffa",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "pre_ute",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Prenotazione",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "pag_pre",
+      "da": "MetodoPay",
+      "molt_da": "1..1",
+      "a": "Prenotazione",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "pre_sis",
+      "classe": "occupanti",
+      "da": "Prenotazione",
+      "molt_da": "1..*",
+      "a": "Sistemazione",
+      "molt_a": "1..*"
+    },
+    {
+      "nome": "sconto",
+      "classe": "Sconto",
+      "da": "Struttura",
+      "molt_da": "0..*",
+      "a": "Livello",
+      "molt_a": "0..*"
+    }
+  ],
+  "generalizzazioni": [
+    {
+      "padre": "Utente",
+      "figlie": [
+        "Gestore"
+      ],
+      "vincolo": ""
+    },
+    {
+      "padre": "Prenotazione",
+      "figlie": [
+        "Accettata",
+        "Rifiutata"
+      ],
+      "vincolo": "{disjoint}"
+    },
+    {
+      "padre": "Prenotazione",
+      "figlie": [
+        "Annullata"
+      ],
+      "vincolo": ""
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "nome": "CozyRooms 2023-09-11 — ristrutturato",
+  "classi": {
+    "Utente": {
+      "attributi": [
+        [
+          "nome",
+          "Stringa"
+        ],
+        [
+          "cognome",
+          "Stringa"
+        ],
+        [
+          "email",
+          "Mail"
+        ],
+        [
+          "num",
+          "Cell"
+        ],
+        [
+          "id",
+          "serial {id}"
+        ],
+        [
+          "cod",
+          "CF [0..1] {id1}"
+        ]
+      ],
+      "operazioni": [
+        [
+          "Fedelta",
+          "Int_GE2"
+        ]
+      ]
+    },
+    "Struttura": [
+      [
+        "id",
+        "serial {id}"
+      ],
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "stelle",
+        "Star"
+      ],
+      [
+        "via",
+        "Indirizzo"
+      ]
+    ],
+    "Citta": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "id",
+        "serial {id}"
+      ]
+    ],
+    "Tipologia": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Sistemazione": [
+      [
+        "id",
+        "serial {id}"
+      ],
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "posti",
+        "Int_G2"
+      ]
+    ],
+    "Tariffa": [
+      [
+        "posti",
+        "Int_G2 {id}"
+      ],
+      [
+        "giorno",
+        "Date {id}"
+      ],
+      [
+        "prezzo",
+        "Real_GE2"
+      ],
+      [
+        "id",
+        "serial {id1}"
+      ]
+    ],
+    "Livello": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "pren",
+        "Int_GE2 {id}"
+      ]
+    ],
+    "MetodoPay": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Prenotazione": [
+      [
+        "istPren",
+        "Timestamp"
+      ],
+      [
+        "inizio",
+        "Date"
+      ],
+      [
+        "fine",
+        "Date"
+      ],
+      [
+        "istAcc",
+        "Timestamp [0..1]"
+      ],
+      [
+        "istAnn",
+        "Timestamp [0..1]"
+      ],
+      [
+        "istRif",
+        "Timestamp [0..1]"
+      ],
+      [
+        "id",
+        "serial {id}"
+      ]
+    ],
+    "Sconto": [
+      [
+        "val",
+        "int_unit"
+      ]
+    ],
+    "occupanti": [
+      [
+        "occupanti",
+        "Int_G2"
+      ]
+    ]
+  },
+  "associazioni": [
+    {
+      "nome": "cit_str",
+      "da": "Citta",
+      "molt_da": "1..1",
+      "a": "Struttura",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "str_tip",
+      "da": "Tipologia",
+      "molt_da": "1..1",
+      "a": "Struttura",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "sis_str",
+      "da": "Struttura",
+      "molt_da": "1..1",
+      "a": "Sistemazione",
+      "molt_a": "1..*"
+    },
+    {
+      "nome": "sis_tar",
+      "da": "Sistemazione",
+      "molt_da": "1..1 {id}",
+      "a": "Tariffa",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "pre_ute",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Prenotazione",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "pag_pre",
+      "da": "MetodoPay",
+      "molt_da": "1..1",
+      "a": "Prenotazione",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "pre_sis",
+      "classe": "occupanti",
+      "da": "Prenotazione",
+      "molt_da": "1..*",
+      "a": "Sistemazione",
+      "molt_a": "1..*"
+    },
+    {
+      "nome": "sconto",
+      "classe": "Sconto",
+      "da": "Struttura",
+      "molt_da": "0..*",
+      "a": "Livello",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "ges_str",
+      "da": "Utente",
+      "molt_da": "1..*",
+      "a": "Struttura",
+      "molt_a": "0..*"
+    }
+  ],
+  "generalizzazioni": []
+}

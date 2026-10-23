@@ -1,0 +1,257 @@
+{
+  "nome": "DKLCloud 2024-01-16 — concettuale",
+  "classi": {
+    "Continente": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Nazione": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Citta": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Utente": [
+      [
+        "codice",
+        "COD {id}"
+      ]
+    ],
+    "Privato": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "cognome",
+        "Stringa"
+      ]
+    ],
+    "Commerciale": [
+      [
+        "ragione",
+        "Stringa"
+      ]
+    ],
+    "Carta": [
+      [
+        "scad",
+        "Data"
+      ],
+      [
+        "titolare",
+        "Stringa"
+      ],
+      [
+        "numero",
+        "NumCarta"
+      ]
+    ],
+    "Tariffa": [
+      [
+        "peso",
+        "Range {id}"
+      ],
+      [
+        "def",
+        "Data {id}"
+      ],
+      [
+        "prezzo",
+        "Valuta"
+      ]
+    ],
+    "Spedizione": {
+      "attributi": [
+        [
+          "oraRitiro",
+          "Ora"
+        ],
+        [
+          "istSped",
+          "DataOra"
+        ],
+        [
+          "pesoKG",
+          "Reale >= 0"
+        ],
+        [
+          "importoAssicurato",
+          "Valuta"
+        ]
+      ],
+      "operazioni": [
+        [
+          "prezzo",
+          "Valuta"
+        ]
+      ]
+    },
+    "InCarico": [],
+    "SpedConsegnata": [
+      [
+        "istCons",
+        "DataOra"
+      ]
+    ],
+    "Corriere": [
+      [
+        "nome",
+        "Stringa"
+      ]
+    ],
+    "Depot": [],
+    "Mezzo": [],
+    "TipoMezzo": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "ritira": [
+      [
+        "indirizzo",
+        "Ind"
+      ]
+    ],
+    "spedisce": [],
+    "spe_dep": [
+      [
+        "inizio",
+        "DataOra"
+      ],
+      [
+        "fine",
+        "DataOra"
+      ]
+    ]
+  },
+  "associazioni": [
+    {
+      "nome": "con_naz",
+      "da": "Continente",
+      "molt_da": "1..1 {id}",
+      "a": "Nazione",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "cit_naz",
+      "da": "Nazione",
+      "molt_da": "1..1 {id}",
+      "a": "Citta",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "rit_cit",
+      "da": "Citta",
+      "molt_da": "1..1",
+      "a": "ritira",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "spe_cit",
+      "da": "Citta",
+      "molt_da": "1..1",
+      "a": "spedisce",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "ute_car",
+      "da": "Utente",
+      "molt_da": "0..*",
+      "a": "Carta",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "spe_car",
+      "da": "spedisce",
+      "molt_da": "0..*",
+      "a": "Carta",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "",
+      "classe": "spedisce",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Spedizione",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "ritira",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Spedizione",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "cor_spe",
+      "da": "Corriere",
+      "molt_da": "1..1",
+      "a": "InCarico",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "spe_dep",
+      "da": "Spedizione",
+      "molt_da": "0..*",
+      "a": "Depot",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "spe_mez",
+      "da": "spe_dep",
+      "molt_da": "0..*",
+      "a": "Mezzo",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "mez_tip",
+      "da": "Mezzo",
+      "molt_da": "0..*",
+      "a": "TipoMezzo",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "cit_dep",
+      "da": "Depot",
+      "molt_da": "0..*",
+      "a": "Citta",
+      "molt_a": "1..1"
+    }
+  ],
+  "generalizzazioni": [
+    {
+      "padre": "Utente",
+      "figlie": [
+        "Privato",
+        "Commerciale"
+      ],
+      "vincolo": "{complete, disj}"
+    },
+    {
+      "padre": "Spedizione",
+      "figlie": [
+        "InCarico"
+      ],
+      "vincolo": ""
+    },
+    {
+      "padre": "InCarico",
+      "figlie": [
+        "SpedConsegnata"
+      ],
+      "vincolo": ""
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "nome": "TimeBank 2024-04-03 — use-case",
+  "attori": [
+    "Utente",
+    "UtenteRegistrato"
+  ],
+  "usecase": [
+    "Registrazione",
+    "CercaUtente",
+    "GestioneAbilita",
+    "Feedback"
+  ],
+  "associazioni": [
+    {
+      "nome": "",
+      "da": "Utente",
+      "molt_da": "",
+      "a": "Registrazione",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "UtenteRegistrato",
+      "molt_da": "",
+      "a": "CercaUtente",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "UtenteRegistrato",
+      "molt_da": "",
+      "a": "GestioneAbilita",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "UtenteRegistrato",
+      "molt_da": "",
+      "a": "Feedback",
+      "molt_a": ""
+    }
+  ],
+  "generalizzazioni": []
+}

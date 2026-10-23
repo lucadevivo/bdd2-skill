@@ -1,0 +1,68 @@
+{
+  "nome": "CozyRooms 2023-09-11 — use-case",
+  "attori": [
+    "Utente",
+    "Gestore"
+  ],
+  "usecase": [
+    "RicercaStanze",
+    "InformazioniAccount",
+    "RichiestaPrenotazioni",
+    "RegistraStrutture",
+    "StrutturePiene",
+    "GestionePrenotazioni"
+  ],
+  "associazioni": [
+    {
+      "nome": "",
+      "da": "Utente",
+      "molt_da": "",
+      "a": "RicercaStanze",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Utente",
+      "molt_da": "",
+      "a": "InformazioniAccount",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Utente",
+      "molt_da": "",
+      "a": "RichiestaPrenotazioni",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Gestore",
+      "molt_da": "",
+      "a": "RegistraStrutture",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Gestore",
+      "molt_da": "",
+      "a": "StrutturePiene",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Gestore",
+      "molt_da": "",
+      "a": "GestionePrenotazioni",
+      "molt_a": ""
+    }
+  ],
+  "generalizzazioni": [
+    {
+      "padre": "Utente",
+      "figlie": [
+        "Gestore"
+      ],
+      "vincolo": ""
+    }
+  ]
+}

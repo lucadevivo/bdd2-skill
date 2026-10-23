@@ -1,0 +1,69 @@
+{
+  "nome": "My Precious — use-case",
+  "attori": [
+    "PatrimonioArtistico",
+    "Management",
+    "Biglietteria"
+  ],
+  "usecase": [
+    "GestioneOpere",
+    "GestioneRestauri",
+    "GestioneEsposizioni",
+    "GestionePrestiti",
+    "StatisticheOpere",
+    "GestioneBiglietti",
+    "StatisticheBiglietti"
+  ],
+  "associazioni": [
+    {
+      "nome": "",
+      "da": "PatrimonioArtistico",
+      "molt_da": "",
+      "a": "GestioneOpere",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "PatrimonioArtistico",
+      "molt_da": "",
+      "a": "GestioneRestauri",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Management",
+      "molt_da": "",
+      "a": "GestioneEsposizioni",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Management",
+      "molt_da": "",
+      "a": "GestionePrestiti",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Management",
+      "molt_da": "",
+      "a": "StatisticheOpere",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Biglietteria",
+      "molt_da": "",
+      "a": "GestioneBiglietti",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Biglietteria",
+      "molt_da": "",
+      "a": "StatisticheBiglietti",
+      "molt_a": ""
+    }
+  ],
+  "generalizzazioni": []
+}

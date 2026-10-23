@@ -1,0 +1,242 @@
+{
+  "nome": "My Precious — ristrutturato",
+  "classi": {
+    "Nazione": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Citta": [
+      [
+        "nome",
+        "Stringa {id1}"
+      ]
+    ],
+    "Autore": [
+      [
+        "nomeAut",
+        "Stringa {id}"
+      ],
+      [
+        "annoNas",
+        "Integer"
+      ],
+      [
+        "annoMor",
+        "Integer [0..1]"
+      ]
+    ],
+    "Categoria": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Tecnica": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Corrente": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Opera": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "nomeOpe",
+        "Stringa"
+      ],
+      [
+        "annoOpe",
+        "Integer"
+      ],
+      [
+        "prestabile",
+        "Bool"
+      ]
+    ],
+    "Prestito": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "inizioPre",
+        "Timestamp"
+      ],
+      [
+        "finePre",
+        "Timestamp"
+      ],
+      [
+        "dato",
+        "Bool"
+      ]
+    ],
+    "Museo": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "nome",
+        "Stringa"
+      ]
+    ],
+    "Restauro": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "inizioRes",
+        "Timestamp"
+      ],
+      [
+        "finePres",
+        "Timestamp [0..1]"
+      ]
+    ],
+    "Esposizione": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "inizioEsp",
+        "Timestamp"
+      ],
+      [
+        "fineEsp",
+        "Timestamp [0..1]"
+      ],
+      [
+        "sezione",
+        "Stringa"
+      ],
+      [
+        "nomeEsp",
+        "Stringa [0..1]"
+      ],
+      [
+        "temp",
+        "Bool"
+      ]
+    ],
+    "Tema": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Biglietto": [
+      [
+        "id",
+        "Serial {id}"
+      ],
+      [
+        "dataBigl",
+        "Date"
+      ],
+      [
+        "temp",
+        "Bool [0..1]"
+      ]
+    ]
+  },
+  "associazioni": [
+    {
+      "nome": "citNaz",
+      "da": "Nazione",
+      "molt_da": "1..1 {id1}",
+      "a": "Citta",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "autCit",
+      "da": "Citta",
+      "molt_da": "1..1",
+      "a": "Autore",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "autOpe",
+      "da": "Autore",
+      "molt_da": "1..1",
+      "a": "Opera",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "catOpe",
+      "da": "Categoria",
+      "molt_da": "1..1",
+      "a": "Opera",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "opeTec",
+      "da": "Tecnica",
+      "molt_da": "0..1",
+      "a": "Opera",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "corOpe",
+      "da": "Corrente",
+      "molt_da": "0..*",
+      "a": "Opera",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "opePre",
+      "da": "Opera",
+      "molt_da": "1..1",
+      "a": "Prestito",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "opeRes",
+      "da": "Opera",
+      "molt_da": "1..1",
+      "a": "Restauro",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "espOpe",
+      "da": "Opera",
+      "molt_da": "0..*",
+      "a": "Esposizione",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "musPre",
+      "da": "Museo",
+      "molt_da": "1..1",
+      "a": "Prestito",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "espTema",
+      "da": "Tema",
+      "molt_da": "0..1",
+      "a": "Esposizione",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "bigEsp",
+      "da": "Esposizione",
+      "molt_da": "0..1",
+      "a": "Biglietto",
+      "molt_a": "0..*"
+    }
+  ],
+  "generalizzazioni": []
+}

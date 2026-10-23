@@ -1,0 +1,78 @@
+{
+  "nome": "Citta Verde — use-case",
+  "attori": [
+    "Comune",
+    "Management",
+    "Operatore",
+    "Sistema"
+  ],
+  "usecase": [
+    "GestisciVerde",
+    "GestisciAttrezzi",
+    "GestioneSquadra",
+    "GestioneInterventi",
+    "AreeSensibili",
+    "InterventiEseguiti",
+    "CercaSquadre",
+    "TassoMalattia"
+  ],
+  "associazioni": [
+    {
+      "nome": "",
+      "da": "Comune",
+      "molt_da": "",
+      "a": "GestisciVerde",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Comune",
+      "molt_da": "",
+      "a": "GestisciAttrezzi",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Management",
+      "molt_da": "",
+      "a": "GestioneSquadra",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Management",
+      "molt_da": "",
+      "a": "GestioneInterventi",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Management",
+      "molt_da": "",
+      "a": "AreeSensibili",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Operatore",
+      "molt_da": "",
+      "a": "InterventiEseguiti",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Sistema",
+      "molt_da": "",
+      "a": "CercaSquadre",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Sistema",
+      "molt_da": "",
+      "a": "TassoMalattia",
+      "molt_a": ""
+    }
+  ],
+  "generalizzazioni": []
+}

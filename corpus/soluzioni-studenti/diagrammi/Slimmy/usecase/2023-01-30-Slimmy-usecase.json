@@ -1,0 +1,93 @@
+{
+  "nome": "Slimmy 2023-01-30 — use-case",
+  "attori": [
+    "UtenteWeb",
+    "Redazione",
+    "Utente",
+    "UtentePremium"
+  ],
+  "usecase": [
+    "Registrazione",
+    "ArchivioAlimenti",
+    "AcquistoAbbonamento",
+    "ValidazioneAlimento",
+    "Statistiche",
+    "RicercaAlimenti",
+    "ResocontoDieta",
+    "CreazioneDieta"
+  ],
+  "associazioni": [
+    {
+      "nome": "",
+      "da": "UtenteWeb",
+      "molt_da": "",
+      "a": "Registrazione",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Redazione",
+      "molt_da": "",
+      "a": "ArchivioAlimenti",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Utente",
+      "molt_da": "",
+      "a": "ArchivioAlimenti",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Utente",
+      "molt_da": "",
+      "a": "AcquistoAbbonamento",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Utente",
+      "molt_da": "",
+      "a": "ValidazioneAlimento",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Utente",
+      "molt_da": "",
+      "a": "Statistiche",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Utente",
+      "molt_da": "",
+      "a": "RicercaAlimenti",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "UtentePremium",
+      "molt_da": "",
+      "a": "ResocontoDieta",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "UtentePremium",
+      "molt_da": "",
+      "a": "CreazioneDieta",
+      "molt_a": ""
+    }
+  ],
+  "generalizzazioni": [
+    {
+      "padre": "Utente",
+      "figlie": [
+        "UtentePremium"
+      ],
+      "vincolo": ""
+    }
+  ]
+}

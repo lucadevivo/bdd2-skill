@@ -1,0 +1,342 @@
+{
+  "nome": "SafeOnTheBeach 2020-09-04 — concettuale",
+  "classi": {
+    "Mare": [
+      [
+        "nome",
+        "Stringa"
+      ]
+    ],
+    "Litorale": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "estensioneKm",
+        "Reale > 0"
+      ]
+    ],
+    "Comune": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "provincia",
+        "Provincia"
+      ]
+    ],
+    "Zona": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "pax",
+        "Intero > 0"
+      ],
+      [
+        "superficiem2",
+        "Reale > 0"
+      ],
+      [
+        "animali",
+        "Booleano"
+      ]
+    ],
+    "RiservaAmb": [
+      [
+        "descrizione",
+        "Stringa"
+      ],
+      [
+        "istituzione",
+        "Data"
+      ]
+    ],
+    "Spiaggia": [
+      [
+        "serviziIgienici",
+        "Booleano"
+      ]
+    ],
+    "Localita": [
+      [
+        "posCentro",
+        "Posizione"
+      ]
+    ],
+    "AttivitaComm": [
+      [
+        "numeroTelefono",
+        "Telefono"
+      ]
+    ],
+    "StabilimentoBaln": [
+      [
+        "prezzo",
+        "Reale > 0"
+      ]
+    ],
+    "Bar": [
+      [
+        "nome",
+        "Stringa"
+      ]
+    ],
+    "Ristorante": [
+      [
+        "nome",
+        "Stringa"
+      ]
+    ],
+    "Attrezzatura": [
+      [
+        "nome",
+        "Stringa"
+      ]
+    ],
+    "Utente": [
+      [
+        "CF",
+        "CodiceFiscale {id}"
+      ]
+    ],
+    "UtenPrivato": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "cognome",
+        "Stringa"
+      ],
+      [
+        "genere",
+        "{'M','F'}"
+      ],
+      [
+        "dataNascita",
+        "Data"
+      ],
+      [
+        "luogoNascita",
+        "Stringa"
+      ]
+    ],
+    "UtenCommerciante": [
+      [
+        "ragioneSociale",
+        "Stringa"
+      ]
+    ],
+    "Evento": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "descrizione",
+        "Stringa"
+      ],
+      [
+        "prezzo",
+        "Reale > 0 (0,1)"
+      ],
+      [
+        "pax",
+        "Intero > 0"
+      ],
+      [
+        "inizio",
+        "DataOra"
+      ],
+      [
+        "fine",
+        "DataOra"
+      ]
+    ],
+    "Prenotazione": [
+      [
+        "arrivo",
+        "DataOra"
+      ],
+      [
+        "abbandono",
+        "DataOra"
+      ],
+      [
+        "nAnimali",
+        "Intero >= 0"
+      ]
+    ],
+    "Accesso": [
+      [
+        "arrivo",
+        "DataOra"
+      ]
+    ],
+    "AccTerminato": [
+      [
+        "abbandono",
+        "DataOra"
+      ]
+    ],
+    "prezzoGiorn": [
+      [
+        "prezzoGiorn",
+        "Reale > 0"
+      ]
+    ]
+  },
+  "associazioni": [
+    {
+      "nome": "litMar",
+      "da": "Litorale",
+      "molt_da": "0..*",
+      "a": "Mare",
+      "molt_a": "1..*"
+    },
+    {
+      "nome": "litCom",
+      "da": "Litorale",
+      "molt_da": "0..*",
+      "a": "Comune",
+      "molt_a": "1..*"
+    },
+    {
+      "nome": "litZon",
+      "da": "Litorale",
+      "molt_da": "1..1",
+      "a": "Zona",
+      "molt_a": "1..*"
+    },
+    {
+      "nome": "zonLoc",
+      "da": "Zona",
+      "molt_da": "0..*",
+      "a": "Localita",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "locCom",
+      "da": "Localita",
+      "molt_da": "0..*",
+      "a": "Comune",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "locFrazCom",
+      "da": "Localita",
+      "molt_da": "0..*",
+      "a": "Comune",
+      "molt_a": "0..1"
+    },
+    {
+      "nome": "spiAtt",
+      "da": "Spiaggia",
+      "molt_da": "1..1",
+      "a": "StabilimentoBaln",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "stabAttr",
+      "da": "StabilimentoBaln",
+      "molt_da": "0..*",
+      "a": "Attrezzatura",
+      "molt_a": "0..*",
+      "classe": "prezzoGiorn"
+    },
+    {
+      "nome": "comAtt",
+      "da": "AttivitaComm",
+      "molt_da": "0..*",
+      "a": "UtenCommerciante",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "accUten",
+      "da": "Accesso",
+      "molt_da": "0..*",
+      "a": "UtenPrivato",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "accZon",
+      "da": "Accesso",
+      "molt_da": "0..*",
+      "a": "Zona",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "prenZon",
+      "da": "Prenotazione",
+      "molt_da": "0..*",
+      "a": "Zona",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "prenEven",
+      "da": "Prenotazione",
+      "molt_da": "0..*",
+      "a": "Evento",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "prenUten",
+      "da": "Prenotazione",
+      "molt_da": "0..*",
+      "a": "UtenPrivato",
+      "molt_a": "1..*"
+    },
+    {
+      "nome": "evenZon",
+      "da": "Evento",
+      "molt_da": "0..*",
+      "a": "Zona",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "commEven",
+      "da": "Evento",
+      "molt_da": "0..*",
+      "a": "UtenCommerciante",
+      "molt_a": "1..1"
+    }
+  ],
+  "generalizzazioni": [
+    {
+      "padre": "Zona",
+      "figlie": [
+        "RiservaAmb",
+        "Spiaggia"
+      ],
+      "vincolo": "{disjoint, complete}"
+    },
+    {
+      "padre": "AttivitaComm",
+      "figlie": [
+        "StabilimentoBaln",
+        "Bar",
+        "Ristorante"
+      ],
+      "vincolo": "{disjoint, complete}"
+    },
+    {
+      "padre": "Utente",
+      "figlie": [
+        "UtenPrivato",
+        "UtenCommerciante"
+      ],
+      "vincolo": "{disjoint, complete}"
+    },
+    {
+      "padre": "Accesso",
+      "figlie": [
+        "AccTerminato"
+      ],
+      "vincolo": ""
+    }
+  ]
+}

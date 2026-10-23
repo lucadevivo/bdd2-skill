@@ -1,0 +1,299 @@
+{
+  "nome": "Slimmy 2023-01-30 — ristrutturato",
+  "classi": {
+    "Nazione": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Utente": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "cognome",
+        "Stringa"
+      ],
+      [
+        "email",
+        "Mail {id}"
+      ],
+      [
+        "password",
+        "Stringa"
+      ],
+      [
+        "id",
+        "serial {id}"
+      ]
+    ],
+    "Abbonamento": [
+      [
+        "inizio",
+        "Data"
+      ],
+      [
+        "fine",
+        "Data"
+      ],
+      [
+        "id",
+        "serial {id}"
+      ]
+    ],
+    "DurataDieta": [
+      [
+        "inizio",
+        "Data"
+      ],
+      [
+        "Fine",
+        "Data [0..1]"
+      ],
+      [
+        "id",
+        "serial {id}"
+      ]
+    ],
+    "Dieta": [
+      [
+        "kCalMin",
+        "Intero >= 0"
+      ],
+      [
+        "kCalMax",
+        "Intero >= 0 [0..1]"
+      ],
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "id",
+        "serial {id}"
+      ]
+    ],
+    "Nutriente": [
+      [
+        "nome",
+        "Stringa {id}"
+      ],
+      [
+        "opz",
+        "bool"
+      ]
+    ],
+    "Alimento": {
+      "attributi": [
+        [
+          "nome",
+          "Stringa"
+        ],
+        [
+          "codice",
+          "COD [0..1]"
+        ],
+        [
+          "kCal",
+          "Int_GEZ"
+        ],
+        [
+          "porzione",
+          "Real_GEZ"
+        ],
+        [
+          "quantita",
+          "Real_GEZ"
+        ],
+        [
+          "istante",
+          "Date"
+        ],
+        [
+          "id",
+          "serial {id}"
+        ]
+      ],
+      "operazioni": [
+        [
+          "invalido",
+          "bool"
+        ],
+        [
+          "valido",
+          "bool"
+        ]
+      ]
+    },
+    "Marca": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Unita": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "TipoPasto": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Pasto": [
+      [
+        "giorno",
+        "Date"
+      ],
+      [
+        "id",
+        "serial {id}"
+      ]
+    ],
+    "die_nut": [
+      [
+        "min",
+        "Reale >= 0"
+      ],
+      [
+        "max",
+        "Reale >= 0 [0..1]"
+      ]
+    ],
+    "nut_al": [
+      [
+        "grammatura",
+        "Reale >= 0"
+      ]
+    ],
+    "pas_ali": [
+      [
+        "quantita",
+        "Reale >= 0"
+      ]
+    ],
+    "valida": [
+      [
+        "ist",
+        "Data"
+      ]
+    ],
+    "invalida": [
+      [
+        "ist",
+        "Data"
+      ]
+    ]
+  },
+  "associazioni": [
+    {
+      "nome": "ute_naz",
+      "da": "Utente",
+      "molt_da": "0..*",
+      "a": "Nazione",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "ute_abb",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Abbonamento",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "ute_die",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "DurataDieta",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "dur_die",
+      "da": "DurataDieta",
+      "molt_da": "0..*",
+      "a": "Dieta",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "",
+      "classe": "die_nut",
+      "da": "Dieta",
+      "molt_da": "0..*",
+      "a": "Nutriente",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "nut_al",
+      "da": "Nutriente",
+      "molt_da": "0..*",
+      "a": "Alimento",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "invalida",
+      "da": "Utente",
+      "molt_da": "0..*",
+      "a": "Alimento",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "ute_pas",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Pasto",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "tip_pas",
+      "da": "TipoPasto",
+      "molt_da": "1..1",
+      "a": "Pasto",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "pas_ali",
+      "da": "Pasto",
+      "molt_da": "0..*",
+      "a": "Alimento",
+      "molt_a": "1..*"
+    },
+    {
+      "nome": "ali_mar",
+      "da": "Alimento",
+      "molt_da": "0..*",
+      "a": "Marca",
+      "molt_a": "0..1"
+    },
+    {
+      "nome": "ali_uni",
+      "da": "Alimento",
+      "molt_da": "0..*",
+      "a": "Unita",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "ute_ali",
+      "da": "Utente",
+      "molt_da": "0..1",
+      "a": "Alimento",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "valida",
+      "da": "Utente",
+      "molt_da": "0..*",
+      "a": "Alimento",
+      "molt_a": "0..*"
+    }
+  ],
+  "generalizzazioni": []
+}

@@ -1,0 +1,122 @@
+{
+  "nome": "TimeBank 2024-04-03 — concettuale",
+  "classi": {
+    "Abilita": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Utente": {
+      "attributi": [
+        [
+          "nome",
+          "Stringa"
+        ],
+        [
+          "cognome",
+          "Stringa"
+        ],
+        [
+          "mail",
+          "Email"
+        ],
+        [
+          "tel",
+          "Tel"
+        ],
+        [
+          "istIsc",
+          "DataOra"
+        ]
+      ],
+      "operazioni": [
+        [
+          "saldo",
+          "Reale >= 0"
+        ]
+      ]
+    },
+    "Scambio": {
+      "attributi": [
+        [
+          "inizioSca",
+          "DataOra"
+        ],
+        [
+          "durataOre",
+          "Reale > 0"
+        ]
+      ],
+      "operazioni": [
+        [
+          "valore",
+          "Reale > 0"
+        ]
+      ]
+    },
+    "AbiUte": {
+      "attributi": [],
+      "operazioni": [
+        [
+          "media",
+          "Reale >= 0"
+        ]
+      ]
+    },
+    "Feedback": [
+      [
+        "voto",
+        "1..10"
+      ]
+    ]
+  },
+  "associazioni": [
+    {
+      "nome": "abisca",
+      "da": "Abilita",
+      "molt_da": "1..1",
+      "a": "Scambio",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "AbiUte",
+      "da": "Abilita",
+      "molt_da": "0..*",
+      "a": "Utente",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "dasca",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Scambio",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "chiedesca",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Scambio",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "Feedback",
+      "da": "Utente",
+      "molt_da": "1..1",
+      "a": "Scambio",
+      "molt_a": "0..*"
+    }
+  ],
+  "generalizzazioni": [
+    {
+      "padre": "chiedesca",
+      "figlie": [
+        "·assoc4"
+      ],
+      "vincolo": ""
+    }
+  ]
+}

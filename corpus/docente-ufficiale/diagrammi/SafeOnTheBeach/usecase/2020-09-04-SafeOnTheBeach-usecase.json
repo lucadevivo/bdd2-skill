@@ -1,0 +1,65 @@
+{
+  "nome": "SafeOnTheBeach 2020-09-04 — usecase",
+  "attori": [
+    "UtenteWeb",
+    "Ministero",
+    "UtenteNonRegistrato",
+    "UtenteCommerciante",
+    "UtentePrivato"
+  ],
+  "usecase": [
+    "StrumentiRicerca",
+    "GestioneComuni",
+    "StrumentiIscrizione",
+    "GestioneEventi",
+    "StrumentiPrenotazioni"
+  ],
+  "associazioni": [
+    {
+      "nome": "",
+      "da": "UtenteWeb",
+      "molt_da": "",
+      "a": "StrumentiRicerca",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "Ministero",
+      "molt_da": "",
+      "a": "GestioneComuni",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "UtenteNonRegistrato",
+      "molt_da": "",
+      "a": "StrumentiIscrizione",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "UtenteCommerciante",
+      "molt_da": "",
+      "a": "GestioneEventi",
+      "molt_a": ""
+    },
+    {
+      "nome": "",
+      "da": "UtentePrivato",
+      "molt_da": "",
+      "a": "StrumentiPrenotazioni",
+      "molt_a": ""
+    }
+  ],
+  "generalizzazioni": [
+    {
+      "padre": "UtenteWeb",
+      "figlie": [
+        "Ministero",
+        "UtenteNonRegistrato",
+        "UtenteCommerciante",
+        "UtentePrivato"
+      ]
+    }
+  ]
+}

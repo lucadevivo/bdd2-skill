@@ -1,0 +1,12 @@
+/tools/
+__pycache__/
+*.pyc
+_generato/
+.DS_Store
+.claude/
+.gitnexus/
+
+# i .xml dei diagrammi si rigenerano da corpus/scripts/diagrammi-prove.py (47 MB)
+corpus/soluzioni-studenti/diagrammi/**/*.xml
+corpus/docente-ufficiale/diagrammi/**/*.xml
+.impeccable/

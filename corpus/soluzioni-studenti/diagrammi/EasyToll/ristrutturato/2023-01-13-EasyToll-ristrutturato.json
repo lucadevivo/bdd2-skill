@@ -1,0 +1,259 @@
+{
+  "nome": "EasyToll 2023-01-13 — ristrutturato",
+  "classi": {
+    "ClienteTelepass": [
+      [
+        "nome",
+        "Stringa"
+      ],
+      [
+        "cognome",
+        "Stringa"
+      ],
+      [
+        "codFis",
+        "CF {id}"
+      ],
+      [
+        "Iban",
+        "IBAN"
+      ]
+    ],
+    "Autostrada": [
+      [
+        "codice",
+        "COD {id}"
+      ],
+      [
+        "nome",
+        "Stringa [0..1]"
+      ]
+    ],
+    "Casello": [
+      [
+        "nome",
+        "Stringa {id}"
+      ],
+      [
+        "codCasello",
+        "COD {id1}"
+      ],
+      [
+        "volumeMax",
+        "Int_GEZ"
+      ],
+      [
+        "servizio",
+        "bool"
+      ],
+      [
+        "posKM",
+        "Real_GEZ {id2}"
+      ],
+      [
+        "id",
+        "serial {id3}"
+      ],
+      [
+        "telepass",
+        "bool"
+      ]
+    ],
+    "Localita": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Pagamento": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Tagliando": {
+      "attributi": [
+        [
+          "senso",
+          "bool"
+        ],
+        [
+          "codice",
+          "COD {id}"
+        ]
+      ],
+      "operazioni": [
+        [
+          "costo",
+          "Reale >= 0"
+        ]
+      ]
+    },
+    "Veicolo": [
+      [
+        "targa",
+        "Targa {id}"
+      ]
+    ],
+    "ClasseVeicolo": [
+      [
+        "nome",
+        "Stringa {id}"
+      ]
+    ],
+    "Tutor": [
+      [
+        "posInizioKM",
+        "Real_GEZ"
+      ],
+      [
+        "posFineKM",
+        "Real_GEZ"
+      ],
+      [
+        "id",
+        "serial {id}"
+      ],
+      [
+        "senso",
+        "bool"
+      ]
+    ],
+    "Rilevazione": [
+      [
+        "istInizio",
+        "DateTime"
+      ],
+      [
+        "istFine",
+        "DateTime"
+      ],
+      [
+        "id",
+        "serial {id}"
+      ]
+    ],
+    "entrata": [
+      [
+        "ist",
+        "DateTime"
+      ]
+    ],
+    "uscita": [
+      [
+        "ist",
+        "DateTime"
+      ]
+    ],
+    "tariffa": [
+      [
+        "euroKM",
+        "Real_GEZ"
+      ]
+    ],
+    "velocitaMax": [
+      [
+        "vel",
+        "Int_GEZ"
+      ]
+    ]
+  },
+  "associazioni": [
+    {
+      "nome": "cli_tel",
+      "da": "ClienteTelepass",
+      "molt_da": "0..1",
+      "a": "Tagliando",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "tag_vei",
+      "da": "Tagliando",
+      "molt_da": "0..*",
+      "a": "Veicolo",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "",
+      "classe": "entrata",
+      "da": "Tagliando",
+      "molt_da": "0..*",
+      "a": "Casello",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "",
+      "classe": "uscita",
+      "da": "Tagliando",
+      "molt_da": "0..*",
+      "a": "Casello",
+      "molt_a": "0..1"
+    },
+    {
+      "nome": "aut_cas",
+      "da": "Autostrada",
+      "molt_da": "1..1 {id}",
+      "a": "Casello",
+      "molt_a": "2..*"
+    },
+    {
+      "nome": "cas_pay",
+      "da": "Casello",
+      "molt_da": "0..*",
+      "a": "Pagamento",
+      "molt_a": "1..*"
+    },
+    {
+      "nome": "cas_loc",
+      "da": "Casello",
+      "molt_da": "0..*",
+      "a": "Localita",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "aut_tut",
+      "da": "Autostrada",
+      "molt_da": "1..1",
+      "a": "Tutor",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "tut_ril",
+      "da": "Tutor",
+      "molt_da": "1..1",
+      "a": "Rilevazione",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "ril_vei",
+      "da": "Rilevazione",
+      "molt_da": "0..*",
+      "a": "Veicolo",
+      "molt_a": "1..1"
+    },
+    {
+      "nome": "cla_vei",
+      "da": "ClasseVeicolo",
+      "molt_da": "1..1",
+      "a": "Veicolo",
+      "molt_a": "0..*"
+    },
+    {
+      "nome": "",
+      "classe": "tariffa",
+      "da": "Autostrada",
+      "molt_da": "0..*",
+      "a": "ClasseVeicolo",
+      "molt_a": "1..*"
+    },
+    {
+      "nome": "",
+      "classe": "velocitaMax",
+      "da": "Tutor",
+      "molt_da": "0..*",
+      "a": "ClasseVeicolo",
+      "molt_a": "1..*"
+    }
+  ],
+  "generalizzazioni": []
+}
