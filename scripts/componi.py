@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Compone una soluzione BDD2 in un unico file HTML autosufficiente.
 
-Uso:  componi.py <soluzione.md> [-o cartella] [--titolo "..."]
+Uso:  componi.py <soluzione.md> [-o cartella] [--titolo "..."] [--pdf]
 
 Prende la soluzione scritta nel formato testuale del corso e produce **un solo file** che
 contiene il diagramma UML disegnato (SVG incorporato, quindi ingrandibile e senza file
@@ -69,15 +69,19 @@ li { margin:.35rem 0 }
 li > p { margin:.2rem 0 }
 .nota { font-family:system-ui,sans-serif; font-size:.82rem; color:var(--tenue);
         margin-top:.5rem }
-@page { size:A4; margin:18mm 15mm }
+@page { size:A4; margin:9mm }
 @media print {
-  body { max-width:none; padding:0; font-size:10.5pt }
+  body { max-width:none; margin:0; padding:0 4px; font-size:10.5pt }
   /* in stampa il fuori-colonna non ha senso: il diagramma torna nel flusso e si adatta */
   .diagramma { width:auto; max-width:100%; left:auto; right:auto;
                margin-left:0; margin-right:0; break-inside:avoid }
-  .diagramma svg { max-width:100% }
+  .diagramma svg { max-width:100%; height:auto }
   h2 { break-after:avoid } h3, h4 { break-after:avoid }
-  pre, pre.fol, table { break-inside:avoid }
+  /* su carta non si scorre: quello che esce dal box va a capo, altrimenti viene tagliato */
+  * { overflow-x:visible !important }
+  pre, pre code, code { white-space:pre-wrap; overflow-wrap:anywhere }
+  pre, pre code { font-size:7.4pt; line-height:1.4 }
+  table { break-inside:avoid; width:100%; word-break:break-word }
 }
 """
 
@@ -256,6 +260,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("file"); ap.add_argument("-o", "--out", default=".")
     ap.add_argument("--titolo")
+    ap.add_argument("--pdf", action="store_true", help="stampa anche il PDF con chromium headless")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     nome = re.sub(r"\.md$", "", os.path.basename(a.file))
@@ -264,6 +269,17 @@ def main():
     dest = os.path.join(a.out, nome + ".html")
     open(dest, "w", encoding="utf-8").write(componi(a.file, a.titolo))
     print(dest)
+    if a.pdf:
+        import shutil
+        b = next((shutil.which(n) for n in ("chromium", "chromium-browser", "google-chrome-stable",
+                                             "google-chrome") if shutil.which(n)), None)
+        if not b:
+            sys.exit("--pdf: nessun chromium/chrome nel PATH; stampa l'HTML dal browser")
+        pdf = dest[:-5] + ".pdf"
+        subprocess.run([b, "--headless", "--disable-gpu", "--no-pdf-header-footer",
+                        "--print-to-pdf=" + os.path.abspath(pdf), os.path.abspath(dest)],
+                       check=True, capture_output=True)
+        print(pdf)
 
 if __name__ == "__main__":
     main()

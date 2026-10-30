@@ -651,7 +651,8 @@ barra**, e **il caso vuoto** di ogni «solo / tutti / nessun altro».
 Il file che ne esce è autosufficiente e contiene **tutti** i diagrammi della soluzione come SVG
 incorporati, ognuno sotto l'intestazione della sua sezione: il concettuale della Domanda 2, gli
 **use-case** della Domanda 3 e il **ristrutturato** della Domanda 6. Si apre con un doppio clic e
-si stampa in PDF dal browser.
+si stampa in PDF dal browser. Per leggerlo dal telefono aggiungi `--pdf`: il PDF esce accanto
+all'HTML, con i blocchi di codice che vanno a capo invece di essere tagliati.
 
 **Il diagramma degli use-case si scrive nel formato del corpus**, lo stesso che `converti-xml.py`
 produce dagli export dei progetti ufficiali, sotto un'intestazione `## Use case`:
